@@ -1,0 +1,41 @@
+.back{
+    background-color: rgb(10, 6, 34);
+}
+.title{
+    color: white;
+}
+
+img{
+    width: 35%;
+    
+}
+#yaku {
+    position: absolute;
+    top: 50px;
+    left: 30px;
+    
+}
+#hai {
+   margin-top: 150px;
+}
+
+.btn{
+    width:160px;
+    height: 60px;
+    margin: 0 auto;
+}
+#rush{
+    color: white;
+}
+#cnt{
+    color: white;
+}
+#ball{
+    color: white;
+}
+#yara{
+    position: absolute;
+    top:220px;
+    left: 30px;
+    display: none;
+}
