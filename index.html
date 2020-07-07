@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>落ちろ！ダンバイン</title>
+</head>
+<body>
+    <div class="back">
+    <h1 class="title">CR聖戦士ダンバイン</h1>
+
+    <!--音声ファイル-->
+    <audio id="music" src="music.mp3" preload="auto" loop autoplay><source src="music.mp3"></audio>
+
+    <div class="picure">
+    <ul style="list-style: none;">
+        <li><img id = "yaku" src="img/Yakumono.bmp" alt="Yakumono"></li>
+        <li><img id = "hai" src="img/Haikei.bmp" alt="Haikei"></li>
+    </ul>
+    </div>
+    
+    <button id="btn" type="button" class="btn btn-warning push" onClick="sound()">Push</button>
+    <audio id="sound-file" preload="auto">
+        <source src="ochiro2.wav" type="audio/wav">
+    </audio>
+    <audio id="sound-file-2" preload="auto">
+        <source src="yarasenai.wav" type="audio/wav">
+    </audio>
+    <h2 id = "cnt">80</h2>
+    <h2 id = "rush">Rush×0</h2>
+    <h2 id = "ball">出玉 0</h2>
+    <img id = "yara" src="img/Yarasenaiyo.bmp" alt="Yarasenaiyo">
+</div>
+    <script>
+
+
+var i = 80;
+var c = 0;
+function sound()
+{
+    document.getElementById( 'music' ).play() ;
+	
+    
+    
+   //当たり判定
+    
+    var num = [0,0];
+   num[0] = Math.floor(Math.random()*31); //0~30までの数字を代入(大当たり抽選)
+   num[1] = Math.floor(Math.random()*100); //0~99までの数字を代入(ラウンド振り分け)
+    $('#cnt').text(i);
+    
+    
+    //4ラウンド
+    if(num[0] == 0 &&  num[1] < 50){
+        
+        // [ID:sound-file]の音声ファイルを再生[play()]する
+	document.getElementById( 'sound-file' ).play() ;
+    document.getElementById( 'btn' ).disabled = true;
+    
+    //役物が落ちる
+    
+   $('#yaku').animate({
+    "margin-top" : 150 + "px"
+    
+  }, {
+    'duration' : "slow",
+    'easing' : "swing"
+  });
+  //役物があがる
+  setTimeout(function(){
+    $('#yaku').animate({
+    "margin-top" : 0 + "px"
+    
+  }, {
+    'duration' : 3000,
+    'easing' : "swing"
+  });
+	},5000);
+    i=81;
+    c++;
+    $('#rush').text("Rush×"+c);
+    $('#ball').text("出玉 "+c*416);
+    
+          //ボタンを反応しなくする
+    setTimeout(function(){
+        document.getElementById( 'btn' ).disabled = false;
+    },9000);
+               
+}
+
+//8ラウンド
+if(num[0] == 0 &&  49 < num[1] && num[1] < 86){
+        // [ID:sound-file]の音声ファイルを再生[play()]する
+	document.getElementById( 'sound-file' ).play() ;
+    document.getElementById( 'btn' ).disabled = true;
+    
+    //役物が落ちる
+    
+   $('#yaku').animate({
+    "margin-top" : 150 + "px"
+    
+  }, {
+    'duration' : "slow",
+    'easing' : "swing"
+  });
+  //役物があがる
+  setTimeout(function(){
+    $('#yaku').animate({
+    "margin-top" : 0 + "px"
+    
+  }, {
+    'duration' : 3000,
+    'easing' : "swing"
+  });
+	},5000);
+    i=81;
+    c++;
+    c++;
+    $('#rush').text("Rush×"+c);
+    $('#ball').text("出玉 "+c*416);
+    
+          //ボタンを反応しなくする
+    setTimeout(function(){
+        document.getElementById( 'btn' ).disabled = false;
+    },9000);
+               
+}
+
+
+//12ラウンド
+if(num[0] == 0 && 85 < num[1]){
+    //やらせないよ～
+    $('#yara').css("display", "block");
+       // [ID:sound-file-2]の音声ファイルを再生[play()]する
+       document.getElementById( 'sound-file-2' ).play() ;
+	
+    document.getElementById( 'btn' ).disabled = true;
+    
+    setTimeout(function(){
+        
+        //やらせないよ～消える
+        $('#yara').css("display", "none");
+
+         // [ID:sound-file]の音声ファイルを再生[play()]する
+        document.getElementById( 'sound-file' ).play() ;
+    
+
+    //役物が落ちる
+    
+   $('#yaku').animate({
+    "margin-top" : 150 + "px"
+    
+  }, {
+    'duration' : "slow",
+    'easing' : "swing"
+  });
+  //役物があがる
+  setTimeout(function(){
+    $('#yaku').animate({
+    "margin-top" : 0 + "px"
+    
+  }, {
+    'duration' : 3000,
+    'easing' : "swing"
+  });
+	},5000);
+    i=81;
+    c++;
+    c++;
+    c++;
+    $('#rush').text("Rush×"+c);
+    $('#ball').text("出玉 "+c*416);
+    
+          //ボタンを反応しなくする
+    setTimeout(function(){
+        document.getElementById( 'btn' ).disabled = false;
+    },9000);
+               
+},2000);
+}
+
+
+i--;
+$('#cnt').text(i);
+if(i==0){
+    $('#rush').text("Rush×"+c +"で終了");
+    document.getElementById( 'btn' ).disabled = true;
+}
+
+}
+    </script>
+
+</body>
+</html>
