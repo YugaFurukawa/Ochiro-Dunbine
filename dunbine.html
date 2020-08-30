@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>Dunbine</title>
+</head>
+<body>
+    <div style="text-align: center;">
+        <button id="btn" type="button" class="btn btn-danger"  onClick="attack()">Attack</button>
+    </div>
+    <h2 id="attack" style="text-align:center;">0回転</h2>
+    <script>
+        
+
+        function attack(){
+            var c = 0;
+            while(c >= 0){
+            c++;    
+            var num = [0, 0];
+            num[0] = Math.floor(Math.random() * 320); //0~319までの数字を代入(大当たり抽選)
+            num[1] = Math.floor(Math.random() * 100); //0~99までの数字を代入(確変振り分け)
+    
+            if(num [0] == 0 && num[1] < 50){
+                $('h2').text( c + '回転オーラボーナス');
+                c = -1;
+            }
+    
+            if(num [0] == 0 && num[1] >= 50){
+                $('h2').text( c + '回転フェラリオボーナス');
+                c = -1;
+            }
+    
+        }
+        
+       
+    
+        }
+    </script>
+
+</body>
+
+</html>
+
